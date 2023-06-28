@@ -25,5 +25,4 @@ public class PublisherPayload {
     private String action;
     private String actionStatus;
     private List<Product> products;
-    private String publisherToken;
 }
