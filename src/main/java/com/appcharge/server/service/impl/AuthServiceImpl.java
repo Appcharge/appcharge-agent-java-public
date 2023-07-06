@@ -1,6 +1,8 @@
 package com.appcharge.server.service.impl;
 
+import com.appcharge.server.controller.auth.methods.AppleAuth;
 import com.appcharge.server.controller.auth.methods.FacebookAuth;
+import com.appcharge.server.controller.auth.methods.GoogleAuth;
 import com.appcharge.server.exception.BadRequestException;
 import com.appcharge.server.models.auth.AuthResponse;
 import com.appcharge.server.models.auth.AuthResult;
@@ -19,12 +21,16 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @SneakyThrows
     public AuthResponse authenticatePlayer(AuthenticationRequest authRequest, SecretsService secretsService) {
-        AuthResult authResult = new AuthResult(false, "0");
+        AuthResult authResult = new AuthResult(false, null);
 
         String authMethod = authRequest != null ? authRequest.getAuthMethod() : null;
         if (Objects.requireNonNull(authMethod).equals("facebook")) {
             authResult = FacebookAuth.authenticate(authRequest.getAppId(), authRequest.getToken(),
                     secretsService.getFacebookSecret());
+        } else if (Objects.requireNonNull(authMethod).equals("google")) {
+            authResult = GoogleAuth.authenticate(authRequest.getAppId(), authRequest.getToken());
+        } else if (Objects.requireNonNull(authMethod).equals("apple")) {
+            authResult = AppleAuth.authenticate(authRequest.getAppId(), authRequest.getToken(), secretsService.getAppleSecretApi());
         } else if (Objects.requireNonNull(authMethod).equals("userToken")) {
             authResult = new AuthResult(true, authRequest.getToken());
         } else if (Objects.requireNonNull(authMethod).equals("userPassword")) {
@@ -44,7 +50,7 @@ public class AuthServiceImpl implements AuthService {
         return new AuthResponse(
                 "valid",
                 "https://cdn-icons-png.flaticon.com/512/3408/3408506.png",
-                authResult.getUserId(),
+                authResult.getPublisherErrorMessage(),
                 "John Doe",
                 List.of("seg1", "seg2"),
                 List.of(new ItemBalance("diamonds", 15))

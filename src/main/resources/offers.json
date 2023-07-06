@@ -1,1 +1,61 @@
-{"create":{"publisherOfferId":"Offer_Bundle_2","name":"BEST SPECIAL OFFER EVER","type":"SpecialOffer","intervals":[{"startDate":"2023-02-15T15:38:04.095Z","endDate":"2024-09-16T15:38:04.095Z"}],"offerUiId":"649ac34269796c8d41f3a11a","active":true,"segments":["Segment_1"],"productsSequence":[{"index":1,"products":[],"priceInUsdCents":3000,"playerAvailability":5}],"createdBy":"API","dynamicOfferUi":{"badges":[{"salePercentage":20,"publisherBadgeId":"Badge_1","position":"left"}]}},"update":{"publisherOfferId":"Offer_Bundle_1","name":"BEST BUNDLE OFFER EVER","type":"Bundle","intervals":[{"startDate":"2023-02-15T15:38:04.095Z","endDate":"2024-09-16T15:38:04.095Z"}],"offerUiId":"649ac2e469796c8d41f39f00","active":true,"segments":["Segment_1"],"productsSequence":[{"index":1,"products":[],"priceInUsdCents":3000,"playerAvailability":10}],"createdBy":"API"}}
+{
+  "create": {
+    "publisherOfferId": "Super_Bundle",
+    "name": "BEST BUNDLE EVER",
+    "type": "Bundle",
+    "intervals": [
+      {
+        "startDate": "2023-02-15T15:38:04.095Z",
+        "endDate": "2024-09-16T15:38:04.095Z"
+      }
+    ],
+    "offerUiId": "64a68bfa11f9a6ce57027803",
+    "active": true,
+    "segments": [
+      "Segment_1"
+    ],
+    "productsSequence": [
+      {
+        "index": 1,
+        "products": [],
+        "priceInUsdCents": 199,
+        "playerAvailability": 5
+      }
+    ],
+    "createdBy": "API",
+    "dynamicOfferUi": {
+      "badges": [
+        {
+          "salePercentage": 20,
+          "publisherBadgeId": "Badge_1",
+          "position": "left"
+        }
+      ]
+    }
+  },
+  "update": {
+    "publisherOfferId": "Super_Bundle",
+    "name": "BEST BUNDLE OFFER EVER",
+    "type": "Bundle",
+    "intervals": [
+      {
+        "startDate": "2023-02-15T15:38:04.095Z",
+        "endDate": "2024-09-16T15:38:04.095Z"
+      }
+    ],
+    "offerUiId": "649ac2e469796c8d41f39f00",
+    "active": true,
+    "segments": [
+      "Segment_1"
+    ],
+    "productsSequence": [
+      {
+        "index": 1,
+        "products": [],
+        "priceInUsdCents": 3000,
+        "playerAvailability": 10
+      }
+    ],
+    "createdBy": "API"
+  }
+}
