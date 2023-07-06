@@ -1,1 +1,73 @@
-{"player":{"status":"valid","playerProfileImage":"https://cdn-icons-png.flaticon.com/512/3408/3408506.png","publisherPlayerId":"1234a","playerName":"player1","offers":[{"publisherOfferId":"Offer_1","productsSequence":[{"index":1,"products":[{"publisherProductId":"Product_1","quantity":200},{"publisherProductId":"Product_2","quantity":200}]}]},{"publisherOfferId":"Offer_2","productsSequence":[{"index":1,"products":[{"publisherProductId":"Product_3","quantity":100},{"publisherProductId":"Product_4","quantity":100}]}]}],"balances":[{"publisherProductId":"Product_1","balance":15},{"publisherProductId":"Product_3","balance":13}],"segments":[],"focus":{"specialOfferId":null,"bundleId":null}}}
+{
+  "player": {
+    "status": "valid",
+    "playerProfileImage": "https://cdn-icons-png.flaticon.com/512/3408/3408506.png",
+    "publisherPlayerId": "1234a",
+    "playerName": "player1",
+    "offers": [
+      {
+        "publisherOfferId": "Offer_1",
+        "productsSequence": [
+          {
+            "index": 1,
+            "products": [
+              {
+                "publisherProductId": "789",
+                "quantity": 72720000
+              },
+              {
+                "publisherProductId": "1234435",
+                "quantity": 2
+              },
+              {
+                "publisherProductId": "446",
+                "quantity": 2
+              },
+              {
+                "publisherProductId": "12346",
+                "quantity": 30
+              },
+              {
+                "publisherProductId": "1009",
+                "quantity": 30
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "publisherOfferId": "Offer_2",
+        "productsSequence": [
+          {
+            "index": 1,
+            "products": [
+              {
+                "publisherProductId": "1234435",
+                "quantity": 2
+              },
+              {
+                "publisherProductId": "125",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "balances": [
+      {
+        "publisherProductId": "456",
+        "balance": 15
+      },
+      {
+        "publisherProductId": "446",
+        "balance": 13
+      }
+    ],
+    "segments": [],
+    "focus": {
+      "specialOfferId": null,
+      "bundleId": null
+    }
+  }
+}
