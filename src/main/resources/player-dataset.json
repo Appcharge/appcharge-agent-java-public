@@ -66,8 +66,8 @@
     ],
     "segments": [],
     "focus": {
-      "specialOfferId": null,
-      "bundleId": null
+      "publisherSpecialOfferId": null,
+      "publisherBundleId": null
     }
   }
 }
