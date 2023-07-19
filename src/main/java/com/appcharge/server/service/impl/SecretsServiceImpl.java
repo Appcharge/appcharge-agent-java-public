@@ -19,6 +19,6 @@ public class SecretsServiceImpl implements SecretsService {
     public String getFacebookSecret() {
         return facebookAppSecret;
     }
-    public String getAppleSecretApi() { return appleSecretApi; }
 
+    public String getAppleSecretApi() { return appleSecretApi; }
 }

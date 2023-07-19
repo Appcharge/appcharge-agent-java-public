@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthResult {
     private final Boolean isValid;
-    private final String publisherErrorMessage;
+    private final String userId;
 }

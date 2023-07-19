@@ -21,7 +21,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @SneakyThrows
     public AuthResponse authenticatePlayer(AuthenticationRequest authRequest, SecretsService secretsService) {
-        AuthResult authResult = new AuthResult(false, null);
+        AuthResult authResult = new AuthResult(false, "0");
 
         String authMethod = authRequest != null ? authRequest.getAuthMethod() : null;
         if (Objects.requireNonNull(authMethod).equals("facebook")) {
@@ -37,7 +37,6 @@ public class AuthServiceImpl implements AuthService {
             authResult = new AuthResult(true, authRequest.getToken());
         }
 
-
         if (authResult.getIsValid()) {
             return createAuthResponse(authResult);
         } else {
@@ -49,9 +48,9 @@ public class AuthServiceImpl implements AuthService {
     private AuthResponse createAuthResponse(AuthResult authResult) {
         return new AuthResponse(
                 "valid",
-                "https://cdn-icons-png.flaticon.com/512/3408/3408506.png",
-                authResult.getPublisherErrorMessage(),
-                "John Doe",
+                "https://scontent.ftlv15-1.fna.fbcdn.net/v/t1.6435-9/39453230_281250465987441_6821580385961377792_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=EhNdfDjnT0MAX9Urj2h&_nc_ht=scontent.ftlv15-1.fna&oh=00_AfDz7cKzDCQC17o4L0i1ujpjilH11pTdfVyWPXMxzuOGxQ&oe=64C269BF",
+                authResult.getUserId(),
+                "Joe Dow",
                 List.of("seg1", "seg2"),
                 List.of(new ItemBalance("diamonds", 15))
         );

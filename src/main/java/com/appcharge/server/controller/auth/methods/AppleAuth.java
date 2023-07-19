@@ -44,13 +44,13 @@ public class AppleAuth {
 
                 String userId = extractUserIdFromIdToken(idToken);
 
-                return new AuthResult(true, "Failed to authenticate apple user");
+                return new AuthResult(true, userId);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return new AuthResult(false, "Failed to authenticate apple user");
+        return new AuthResult(false, null);
     }
 
     private static String extractUserIdFromIdToken(String idToken) {
