@@ -72,7 +72,6 @@ public class OfferServiceImpl implements OfferService {
             );
             JsonNode responseBody = response.getBody();
             updateOfferId();
-            assignNewOrderToPlayers(responseBody);
             return ResponseEntity.ok(responseBody);
         } catch (HttpClientErrorException e) {
             HttpStatus status = e.getStatusCode();
@@ -147,40 +146,6 @@ public class OfferServiceImpl implements OfferService {
         // Refresh the offerDataset variable with the updated data
         byte[] fileBytes = Files.readAllBytes(file.toPath());
         offerDataset = new ByteArrayResource(fileBytes);
-    }
-
-
-    private void assignNewOrderToPlayers(JsonNode response) throws IOException {
-        try {
-            // Load player dataset JSON file
-            ObjectMapper objectMapper = new ObjectMapper();
-            File playerDatasetFile = new File(playerDatasetFilePath);
-
-            // Read the JSON from the file
-            JsonNode playerDataset = objectMapper.readTree(playerDatasetFile);
-
-            JsonNode newOrderJson = createMockNewOrder(response);
-
-            // Iterate over each player
-            JsonNode player = playerDataset.get("player");
-            if (player instanceof ObjectNode) {
-                ObjectNode objectNode = (ObjectNode) player;
-                // Add a new order to the player's "offers" array
-                ArrayNode offers = (ArrayNode) player.get("offers");
-                if (offers == null) {
-                    offers = objectMapper.createArrayNode();
-                    objectNode.set("offers", offers);
-                }
-                offers.add(newOrderJson);
-            }
-
-            // Write the updated player dataset back to the file
-            objectMapper.writeValue(playerDatasetFile, playerDataset);
-
-            System.out.println("New order assigned to players successfully. Updated player dataset saved to file: " + playerDatasetFile.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private static JsonNode createMockNewOrder(JsonNode response) {
