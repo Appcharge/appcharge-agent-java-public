@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +25,14 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
     private final SignatureGenerationService signatureGenerationService;
 
-    public AnalyticsServiceImpl(SignatureGenerationService signatureGenerationService) {
+    private final RestTemplate restTemplate;
+
+    public AnalyticsServiceImpl(SignatureGenerationService signatureGenerationService, RestTemplateBuilder restTemplateBuilder) {
         this.signatureGenerationService = signatureGenerationService;
+        if (restTemplateBuilder == null) {
+            throw new IllegalArgumentException("RestTemplateBuilder must not be null!");
+        }
+        this.restTemplate = restTemplateBuilder.build();
         this.objectMapper = new ObjectMapper();
         this.objectMapper.registerModule(new JavaTimeModule());
     }
@@ -38,7 +45,6 @@ public class AnalyticsServiceImpl implements AnalyticsService {
             throw new Exception("Could not parse analytics data");
         }
         System.out.println(body);
-        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = createHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         JsonNode payloadNode = objectMapper.readTree(body); // Parse the body string into a JsonNode

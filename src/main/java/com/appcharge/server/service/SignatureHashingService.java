@@ -1,8 +1,7 @@
 package com.appcharge.server.service;
 
-import org.springframework.stereotype.Service;
-
 import com.appcharge.server.service.entity.SignatureResponse;
+import org.springframework.stereotype.Service;
 
 @Service
 public interface SignatureHashingService {

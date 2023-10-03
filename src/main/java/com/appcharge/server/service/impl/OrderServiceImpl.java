@@ -7,13 +7,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
+;
+
 @Service
-public class OrderServiceIpml implements OrderService {
+public class OrderServiceImpl implements OrderService {
     @Value("${REPORTING_API_URL}/reporting/reports/orders")
     private String getOrdersUrl;
 
@@ -24,10 +27,16 @@ public class OrderServiceIpml implements OrderService {
 
     private final SignatureGenerationService signatureGenerationService;
 
-    public OrderServiceIpml(SignatureGenerationService signatureGenerationService) {
+    private final RestTemplate restTemplate;
+
+    public OrderServiceImpl(SignatureGenerationService signatureGenerationService, RestTemplateBuilder restTemplateBuilder) {
         this.signatureGenerationService = signatureGenerationService;
         this.objectMapper = new ObjectMapper();
         this.objectMapper.registerModule(new JavaTimeModule());
+        if (restTemplateBuilder == null) {
+            throw new IllegalArgumentException("RestTemplateBuilder must not be null!");
+        }
+        this.restTemplate = restTemplateBuilder.build();
     }
 
     @Override
@@ -38,7 +47,6 @@ public class OrderServiceIpml implements OrderService {
             throw new Exception("Could not parse orders data");
         }
         System.out.println(body);
-        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = createHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         JsonNode payloadNode = objectMapper.readTree(body); // Parse the body string into a JsonNode
