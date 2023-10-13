@@ -19,6 +19,7 @@ FROM adoptopenjdk:11-jre-hotspot
 
 ARG offers_path
 ARG player_dataset_path
+ARG events_path
 ARG APP_PORT
 
 ENV APP_PORT=$APP_PORT
@@ -31,6 +32,7 @@ COPY --from=builder /app/build/libs/*SNAPSHOT.jar app.jar
 
 COPY $offers_path /app$offers_path
 COPY $player_dataset_path /app$player_dataset_path
+COPY $events_path /app$events_path
 
 # Expose the port on which the Spring Boot application listens
 EXPOSE $APP_PORT

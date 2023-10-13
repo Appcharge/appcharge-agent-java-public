@@ -23,6 +23,7 @@ public class ServerApplication {
 		registrationBean.setOrder(1);
 
 		decryptionMiddleware.addExcludedRoute("/mocker/offer");
+		decryptionMiddleware.addExcludedRoute("/mocker/events");
 		decryptionMiddleware.addExcludedRoute("/mocker/orders");
 		decryptionMiddleware.addExcludedRoute("/mocker/analytics");
 		return registrationBean;
