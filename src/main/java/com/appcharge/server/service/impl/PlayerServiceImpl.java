@@ -91,6 +91,10 @@ public class PlayerServiceImpl implements PlayerService {
 
         JsonNode playerData = loadPlayerData().get("player");
 
+        if (request.getSessionMetadata() == null) {
+            ((ObjectNode) playerData).remove("sessionMetadata");
+        }
+
 
         if (playerData != null) {
             updateBalances(playerData);
