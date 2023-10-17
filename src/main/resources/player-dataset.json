@@ -3,6 +3,11 @@
     "status": "valid",
     "playerProfileImage": "https:///fb.com/fdsfd",
     "publisherPlayerId": "1234a",
+    "sessionMetadata": {
+      "key1": "value1",
+      "key2": 42,
+      "key3": true
+    },
     "playerName": "player1",
     "offers": [
       {
