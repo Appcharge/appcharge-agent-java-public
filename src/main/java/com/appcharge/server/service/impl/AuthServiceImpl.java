@@ -11,6 +11,7 @@ import com.appcharge.server.models.auth.ItemBalance;
 import com.appcharge.server.service.AuthService;
 import com.appcharge.server.service.SecretsService;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,17 @@ import java.util.Objects;
 
 @Service
 public class AuthServiceImpl implements AuthService {
+    private final FacebookAuth facebookAuth;
+    private final GoogleAuth googleAuth;
+    private final AppleAuth appleAuth;
+
+    @Autowired
+    public AuthServiceImpl(FacebookAuth facebookAuth, GoogleAuth googleAuth, AppleAuth appleAuth) {
+        this.facebookAuth = facebookAuth;
+        this.googleAuth = googleAuth;
+        this.appleAuth = appleAuth;
+    }
+
     @Override
     @SneakyThrows
     public AuthResponse authenticatePlayer(AuthenticationRequest authRequest, SecretsService secretsService) {
@@ -25,16 +37,16 @@ public class AuthServiceImpl implements AuthService {
 
         String authMethod = authRequest != null ? authRequest.getAuthMethod() : null;
         if (Objects.requireNonNull(authMethod).equals("facebook")) {
-            authResult = FacebookAuth.authenticate(authRequest.getAppId(), authRequest.getToken(),
+            authResult = facebookAuth.authenticate(authRequest.getAppId(), authRequest.getToken(),
                     secretsService.getFacebookSecret());
         } else if (Objects.requireNonNull(authMethod).equals("google")) {
-            authResult = GoogleAuth.authenticate(authRequest.getAppId(), authRequest.getToken());
+            authResult = googleAuth.authenticate(authRequest.getAppId(), authRequest.getToken());
         } else if (Objects.requireNonNull(authMethod).equals("apple")) {
-            authResult = AppleAuth.authenticate(authRequest.getAppId(), authRequest.getToken(), secretsService.getAppleSecretApi());
+            authResult = appleAuth.authenticate(authRequest.getAppId(), authRequest.getToken(), secretsService.getAppleSecretApi());
         } else if (Objects.requireNonNull(authMethod).equals("userToken")) {
             authResult = new AuthResult(true, authRequest.getToken());
         } else if (Objects.requireNonNull(authMethod).equals("userPassword")) {
-            authResult = new AuthResult(true, authRequest.getToken());
+            authResult = new AuthResult(true, authRequest.getUserName());
         }
 
         if (authResult.getIsValid()) {

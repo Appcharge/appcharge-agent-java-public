@@ -1,12 +1,11 @@
 package com.appcharge.server.service.impl;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import com.appcharge.server.exception.TimestampExpiredException;
 import com.appcharge.server.service.SignatureHashingService;
 import com.appcharge.server.service.entity.Signature;
 import com.appcharge.server.service.entity.SignatureResponse;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

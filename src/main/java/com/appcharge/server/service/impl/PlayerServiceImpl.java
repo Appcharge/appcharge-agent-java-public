@@ -7,19 +7,18 @@ import com.appcharge.server.service.PlayerService;
 import com.appcharge.server.service.SignatureGenerationService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.*;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.*;
+import java.util.Random;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -30,11 +29,19 @@ public class PlayerServiceImpl implements PlayerService {
     private String awardPublisherURL;
     private final ObjectMapper objectMapper;
     private final SignatureGenerationService signatureGenerationService;
+    private final String playerDatasetFilePath;
+    private final RestTemplate restTemplate;
 
-    public PlayerServiceImpl(SignatureGenerationService signatureGenerationService) {
+    public PlayerServiceImpl(SignatureGenerationService signatureGenerationService,
+                             @Value("${PLAYER_DATASET_FILE_PATH}") String playerDatasetFilePath,
+                             RestTemplateBuilder restTemplateBuilder) {
         this.signatureGenerationService = signatureGenerationService;
-        this.objectMapper = new ObjectMapper();
-        this.objectMapper.registerModule(new JavaTimeModule());
+        this.objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        this.playerDatasetFilePath = playerDatasetFilePath;
+        if (restTemplateBuilder == null) {
+            throw new IllegalArgumentException("RestTemplateBuilder must not be null!");
+        }
+        this.restTemplate = restTemplateBuilder.build();
     }
 
     @Override
@@ -47,7 +54,6 @@ public class PlayerServiceImpl implements PlayerService {
             }
 
             System.out.println(body);
-            RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = createHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             JsonNode payloadNode = objectMapper.readTree(body); // Parse the body string into a JsonNode
@@ -85,8 +91,13 @@ public class PlayerServiceImpl implements PlayerService {
 
         JsonNode playerData = loadPlayerData().get("player");
 
+        if (request.getSessionMetadata() == null) {
+            ((ObjectNode) playerData).remove("sessionMetadata");
+        }
+
 
         if (playerData != null) {
+            updateBalances(playerData);
             String playerDataString = objectMapper.writeValueAsString(playerData);
             System.out.println(playerDataString); // Print the PlayerData for the given playerId
             return ResponseEntity.ok(playerData);
@@ -96,12 +107,20 @@ public class PlayerServiceImpl implements PlayerService {
             return ResponseEntity.badRequest().body(new ErrorResponse(errorMessage));
         }
     }
+    private static void updateBalances(JsonNode playerData) {
+        JsonNode balancesArray = playerData.get("balances");
+        for (JsonNode balanceNode : balancesArray) {
+            if (balanceNode.has("balance")) {
+                int newBalance = new Random().nextInt(100);
+                ((ObjectNode) balanceNode).put("balance", newBalance);
+            }
+        }
+    }
 
     // Method to load the player data from the dataset
     private JsonNode loadPlayerData() throws IOException {
-        String filePath = "./src/main/resources/player-dataset.json";
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File(filePath);
+        File file = new File(playerDatasetFilePath);
 
         try (InputStream inputStream = new FileInputStream(file)) {
             return objectMapper.readTree(inputStream);

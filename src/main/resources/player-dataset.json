@@ -1,53 +1,68 @@
 {
   "player": {
     "status": "valid",
-    "playerProfileImage": "https://cdn-icons-png.flaticon.com/512/3408/3408506.png",
+    "playerProfileImage": "https:///fb.com/fdsfd",
     "publisherPlayerId": "1234a",
+    "sessionMetadata": {
+      "key1": "value1",
+      "key2": 42,
+      "key3": true
+    },
     "playerName": "player1",
     "offers": [
       {
-        "publisherOfferId": "Offer_1",
+        "publisherOfferId": "prom_1",
         "productsSequence": [
           {
             "index": 1,
             "products": [
               {
-                "publisherProductId": "789",
+                "publisherProductId": "111",
                 "quantity": 72720000
               },
               {
-                "publisherProductId": "1234435",
-                "quantity": 2
-              },
-              {
-                "publisherProductId": "446",
-                "quantity": 2
-              },
-              {
-                "publisherProductId": "12346",
-                "quantity": 30
-              },
-              {
-                "publisherProductId": "1009",
-                "quantity": 30
+                "publisherProductId": "Product_1",
+                "quantity": 2000000
               }
             ]
           }
         ]
       },
       {
-        "publisherOfferId": "Offer_2",
+        "publisherOfferId": "bundle_1",
+        "offerPlayerAvailability": 5,
         "productsSequence": [
           {
             "index": 1,
             "products": [
               {
-                "publisherProductId": "1234435",
-                "quantity": 2
+                "publisherProductId": "Product_3",
+                "quantity": 875000000,
+                "rarityProductInfo": {
+                  "stars": 3,
+                  "tooltipText": "test 1",
+                  "rarityText": "test rarity"
+                }
               },
               {
-                "publisherProductId": "125",
-                "quantity": 5
+                "publisherProductId": "66754",
+                "quantity": 2,
+                "badgeText": "X2",
+                "rarityProductInfo": {
+                  "stars": 4,
+                  "tooltipText": "smt",
+                  "rarityText": "here rarity minutes"
+                }
+              },
+              {
+                "publisherProductId": "test111",
+                "quantity": 5,
+                "badgeText": "X8",
+                "rarityProductInfo": {
+                  "stars": 3,
+                  "tooltipText": "tooltip text",
+                  "rarityText": "very rare text"
+                }
               }
             ]
           }
@@ -56,17 +71,16 @@
     ],
     "balances": [
       {
-        "publisherProductId": "456",
+        "publisherProductId": "111",
         "balance": 15
       },
       {
-        "publisherProductId": "446",
+        "publisherProductId": "kkk",
         "balance": 13
       }
     ],
     "segments": [],
     "focus": {
-      "publisherSpecialOfferId": null,
       "publisherBundleId": null
     }
   }

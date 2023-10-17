@@ -1,0 +1,118 @@
+{
+  "order_created": [
+    {
+      "timestamp": 1634112000,
+      "event": "order_created",
+      "appChargePaymentId": "appCharge123",
+      "playerId": "player456",
+      "offer": {
+        "offerName": "Discounted Subscription",
+        "offerInternalId": "offer123",
+        "offerExternalId": "extOffer456",
+        "priceInDollar": 9.99,
+        "priceInCents": 999,
+        "subtotal": 9.99,
+        "tax": 0.0,
+        "currency": "USD",
+        "originalPriceInDollar": 14.99,
+        "country": "US",
+        "products": [
+          {
+            "name": "Product A",
+            "sku": "SKU123",
+            "amount": 1
+          },
+          {
+            "name": "Product B",
+            "sku": "SKU456",
+            "amount": 2
+          }
+        ]
+      },
+      "sessionMetadata": {
+        "key1": "value1",
+        "key2": "value2"
+      },
+      "paymentMethod": "Credit Card",
+      "reason": "New order created"
+    },
+    {
+      "timestamp": 1634112000,
+      "event": "order_created",
+      "appChargePaymentId": "appCharge123",
+      "playerId": "player456",
+      "offer": {
+        "offerName": "Discounted Subscription",
+        "offerInternalId": "offer123",
+        "offerExternalId": "extOffer456",
+        "priceInDollar": 9.99,
+        "priceInCents": 999,
+        "subtotal": 9.99,
+        "tax": 0.0,
+        "currency": "USD",
+        "originalPriceInDollar": 14.99,
+        "country": "US",
+        "products": [
+          {
+            "name": "Product A",
+            "sku": "SKU123",
+            "amount": 1
+          },
+          {
+            "name": "Product B",
+            "sku": "SKU456",
+            "amount": 2
+          }
+        ]
+      },
+      "sessionMetadata": {
+        "key1": "value1",
+        "key2": "value2"
+      },
+      "paymentMethod": "Credit Card",
+      "reason": "New order created"
+    }
+  ],
+  "payment_intent_success": [],
+  "payment_intent_failed": [],
+  "order_completed_success": [],
+  "order_completed_failed": [],
+  "order_cancelled": [
+    {
+      "timestamp": 1634112000,
+      "event": "order_cancelled",
+      "appChargePaymentId": "appCharge123",
+      "playerId": "player456",
+      "offer": {
+        "offerName": "Discounted Subscription",
+        "offerInternalId": "offer123",
+        "offerExternalId": "extOffer456",
+        "priceInDollar": 9.99,
+        "priceInCents": 999,
+        "subtotal": 9.99,
+        "tax": 0.0,
+        "currency": "USD",
+        "originalPriceInDollar": 14.99,
+        "country": "US",
+        "products": [
+          {
+            "name": "Product A",
+            "sku": "SKU123",
+            "amount": 1
+          },
+          {
+            "name": "Product B",
+            "sku": "SKU456",
+            "amount": 2
+          }
+        ]
+      },
+      "sessionMetadata": {
+        "key1": "value1",
+        "key2": "value2"
+      },
+      "paymentMethod": "Credit Card",
+      "reason": "New order created"
+    }
+  ]
+}

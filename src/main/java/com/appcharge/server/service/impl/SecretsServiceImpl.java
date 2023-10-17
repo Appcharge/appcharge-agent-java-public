@@ -1,9 +1,8 @@
 package com.appcharge.server.service.impl;
 
+import com.appcharge.server.service.SecretsService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import com.appcharge.server.service.SecretsService;
 
 @Service
 public class SecretsServiceImpl implements SecretsService {

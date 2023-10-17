@@ -1,13 +1,12 @@
 package com.appcharge.server;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-
 import com.appcharge.server.middleware.DecryptionMiddleware;
 import com.appcharge.server.middleware.ErrorHandlerMiddleware;
 import com.appcharge.server.service.SignatureHashingService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ServerApplication {
