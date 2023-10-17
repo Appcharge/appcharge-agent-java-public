@@ -55,14 +55,13 @@ public class EventsServiceImpl implements EventsService {
     }
     private void writeDataToFile(EventsRequest eventsRequest) {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // Enable indentation
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File(eventsDatasetFilePath);
         try {
             JsonNode tempNode = loadEventsData(file);
-            ArrayNode rootNode = (ArrayNode) tempNode.get(eventsRequest.event);
+            ArrayNode rootNode = (ArrayNode) tempNode.get(eventsRequest.event.toString());
             rootNode.add(objectMapper.convertValue(eventsRequest, JsonNode.class));
 
-            // Use the writerWithDefaultPrettyPrinter() method to write with indentation
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, tempNode);
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.appcharge.server.models.events;
 
+import com.appcharge.server.enums.events.EventType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import java.util.Map;
 
 public class EventsRequest {
     public long timestamp;
-    public String event;
+    public EventType event;
     public String appChargePaymentId;
     public String playerId;
     public PublisherEventOffer offer;
