@@ -24,6 +24,7 @@ public class EventsController {
     public ResponseEntity<EventsResponse> eventEndpoint(@RequestBody String requestBody) throws Exception {
         EventsRequest eventsRequest;
         try {
+            System.out.println("EventsRequest body: "+ requestBody);
             eventsRequest = objectMapper.readValue(requestBody, EventsRequest.class);
         } catch (JsonProcessingException e) {
             System.out.println("Invalid request " + requestBody);
