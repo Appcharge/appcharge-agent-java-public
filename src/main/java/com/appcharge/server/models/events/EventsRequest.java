@@ -10,6 +10,7 @@ import java.util.Map;
 public class EventsRequest {
     public long timestamp;
     public EventType event;
+    public String appChargeOrderId;
     public String appChargePaymentId;
     public String playerId;
     public PublisherEventOffer offer;
