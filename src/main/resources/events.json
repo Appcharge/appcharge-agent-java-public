@@ -1,34 +1,8 @@
 {
-  "order_created" : [ ],
-  "payment_intent_success" : [ ],
-  "payment_intent_failed" : [ ],
-  "order_completed_success" : [ ],
-  "order_completed_failed" : [ ],
-  "order_canceled" : [ {
-    "timestamp" : 1697986352010,
-    "event" : "order_canceled",
-    "appChargeOrderId" : "65353714023f4cf3aa16e575",
-    "appChargePaymentId" : "6535372385786142412b78e2",
-    "playerId" : "test123",
-    "offer" : {
-      "offerName" : "DONOTDELETEOREDIT",
-      "offerInternalId" : "64e4b3a1ea1d943acb815485",
-      "offerExternalId" : "test",
-      "priceInDollar" : 120.0,
-      "priceInCents" : 134,
-      "subtotal" : 120.0,
-      "tax" : 14.0,
-      "currency" : "USD",
-      "originalPriceInDollar" : 120.0,
-      "country" : "US",
-      "products" : [ {
-        "name" : "Product_1",
-        "sku" : "Product_1",
-        "amount" : 0
-      } ]
-    },
-    "sessionMetadata" : null,
-    "paymentMethod" : null,
-    "reason" : "Session expired"
-  } ]
+  "order_created" : [],
+  "payment_intent_success" : [],
+  "payment_intent_failed" : [],
+  "order_completed_success" : [],
+  "order_completed_failed" : [],
+  "order_canceled" : []
 }
