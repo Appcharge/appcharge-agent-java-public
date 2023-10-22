@@ -38,9 +38,9 @@ public class EventsServiceImpl implements EventsService {
     @SneakyThrows
     public EventsResponse processEvent(EventsRequest eventsRequest) throws Exception {
         try {
-            writeDataToFile(eventsRequest);
             return new EventsResponse("An event was saved successfully");
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
@@ -60,6 +60,7 @@ public class EventsServiceImpl implements EventsService {
         try {
             JsonNode tempNode = loadEventsData(file);
             ArrayNode rootNode = (ArrayNode) tempNode.get(eventsRequest.event.toString());
+            System.out.println("hi " + rootNode);
             rootNode.add(objectMapper.convertValue(eventsRequest, JsonNode.class));
 
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, tempNode);
