@@ -38,9 +38,9 @@ public class EventsServiceImpl implements EventsService {
     @SneakyThrows
     public EventsResponse processEvent(EventsRequest eventsRequest) throws Exception {
         try {
-            writeDataToFile(eventsRequest);
             return new EventsResponse("An event was saved successfully");
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
