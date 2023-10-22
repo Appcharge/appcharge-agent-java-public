@@ -60,7 +60,6 @@ public class EventsServiceImpl implements EventsService {
         try {
             JsonNode tempNode = loadEventsData(file);
             ArrayNode rootNode = (ArrayNode) tempNode.get(eventsRequest.event.toString());
-            System.out.println("hi " + rootNode);
             rootNode.add(objectMapper.convertValue(eventsRequest, JsonNode.class));
 
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, tempNode);
