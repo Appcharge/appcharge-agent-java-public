@@ -4,6 +4,7 @@ import com.appcharge.server.enums.events.EventType;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,6 @@ public class EventsRequest {
     public static class OfferSnapshotProduct {
         public String name;
         public String sku;
-        public int amount;
+        public BigInteger amount;
     }
 }
