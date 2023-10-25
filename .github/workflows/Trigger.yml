@@ -1,0 +1,19 @@
+name: Trigger (CI/CD)
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  Trigger:
+    name: Trigger repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger repository
+        run: |
+          curl -L \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          ${{ secrets.URL }} \
+          -d ${{ secrets.MESSAGE }}
