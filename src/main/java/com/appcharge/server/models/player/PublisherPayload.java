@@ -28,6 +28,7 @@ public class PublisherPayload {
     private BigDecimal priceInDollar;
     private BigDecimal subTotal;
     private BigDecimal tax;
+    private BigDecimal originalPriceInDollar;
     private String action;
     private String actionStatus;
     private List<Product> products;
