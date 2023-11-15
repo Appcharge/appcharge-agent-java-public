@@ -52,6 +52,11 @@ public class DecryptionMiddleware extends OncePerRequestFilter {
                 return;
             }
 
+            String publisherToken = request.getHeader("x-publisher-token");
+            if (publisherToken == null || publisherToken.isEmpty()) {
+              throw new Exception("x-publisher-token is not passed.");
+            }
+
             String requestBody = readRequestBody(request);
 
             String serializedJson = objectMapper.writeValueAsString(objectMapper.readValue(requestBody, Object.class));
