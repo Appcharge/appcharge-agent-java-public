@@ -2,11 +2,14 @@ package com.appcharge.server.middleware;
 
 import com.appcharge.server.service.SignatureHashingService;
 import com.appcharge.server.service.entity.SignatureResponse;
+import com.appcharge.server.service.impl.ConfigurationServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import com.appcharge.server.service.ConfigurationService;
 import org.springframework.web.filter.OncePerRequestFilter;
-
+import org.springframework.stereotype.Component;
 import javax.servlet.FilterChain;
 import javax.servlet.ReadListener;
 import javax.servlet.ServletException;
@@ -23,16 +26,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@Component
 public class DecryptionMiddleware extends OncePerRequestFilter {
+
+    private final ConfigurationService configurationService;
     private final SignatureHashingService signatureHashingService;
     private final ObjectMapper objectMapper;
     private final List<String> excludedRoutes;
 
     @Autowired
-    public DecryptionMiddleware(SignatureHashingService signatureHashingService) {
+    public DecryptionMiddleware(SignatureHashingService signatureHashingService, ConfigurationService configurationService) {
         this.signatureHashingService = signatureHashingService;
         this.objectMapper = new ObjectMapper();
         this.excludedRoutes = new ArrayList<>();
+        this.configurationService = configurationService;
     }
 
     public void addExcludedRoute(String route) {
@@ -51,10 +58,10 @@ public class DecryptionMiddleware extends OncePerRequestFilter {
                 filterChain.doFilter(request, response);
                 return;
             }
-
+            System.out.println(configurationService.getPublisherToken());
             String publisherToken = request.getHeader("x-publisher-token");
-            if (publisherToken == null || publisherToken.isEmpty()) {
-              throw new Exception("x-publisher-token is not passed.");
+            if (publisherToken == null || publisherToken.isEmpty() || !publisherToken.equals(configurationService.getPublisherToken())) {
+              throw new Exception("x-publisher-token is not passed or not correct.");
             }
 
             String requestBody = readRequestBody(request);
