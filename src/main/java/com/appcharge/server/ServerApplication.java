@@ -2,6 +2,7 @@ package com.appcharge.server;
 
 import com.appcharge.server.middleware.DecryptionMiddleware;
 import com.appcharge.server.middleware.ErrorHandlerMiddleware;
+import com.appcharge.server.service.ConfigurationService;
 import com.appcharge.server.service.SignatureHashingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,9 +16,9 @@ public class ServerApplication {
 	}
 
 	@Bean
-	public FilterRegistrationBean<DecryptionMiddleware> decryptionFilterRegistration(SignatureHashingService signatureHashingService) {
+	public FilterRegistrationBean<DecryptionMiddleware> decryptionFilterRegistration(SignatureHashingService signatureHashingService, ConfigurationService configurationService) {
 		FilterRegistrationBean<DecryptionMiddleware> registrationBean = new FilterRegistrationBean<>();
-		DecryptionMiddleware decryptionMiddleware = new DecryptionMiddleware(signatureHashingService);
+		DecryptionMiddleware decryptionMiddleware = new DecryptionMiddleware(signatureHashingService, configurationService);
 		registrationBean.setFilter(decryptionMiddleware);
 		registrationBean.addUrlPatterns("/*");
 		registrationBean.setOrder(1);
