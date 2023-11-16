@@ -58,7 +58,6 @@ public class DecryptionMiddleware extends OncePerRequestFilter {
                 filterChain.doFilter(request, response);
                 return;
             }
-            System.out.println(configurationService.getPublisherToken());
             String publisherToken = request.getHeader("x-publisher-token");
             if (publisherToken == null || publisherToken.isEmpty() || !publisherToken.equals(configurationService.getPublisherToken())) {
               throw new Exception("x-publisher-token is not passed or not correct.");
