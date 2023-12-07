@@ -26,10 +26,12 @@ public class PublisherPayload {
     private int priceInCents;
     private String currency;
     private BigDecimal priceInDollar;
+    private BigDecimal priceNetInDollar;
     private BigDecimal subTotal;
     private BigDecimal tax;
     private BigDecimal originalPriceInDollar;
     private String action;
     private String actionStatus;
     private List<Product> products;
+    private String paymentMethod;
 }
