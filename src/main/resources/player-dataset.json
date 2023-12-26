@@ -72,11 +72,11 @@
     "balances": [
       {
         "publisherProductId": "111",
-        "balance": 15
+        "quantity": 15
       },
       {
         "publisherProductId": "kkk",
-        "balance": 13
+        "quantity": 13
       }
     ],
     "segments": [],
