@@ -6,6 +6,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class ItemBalance {
-    private final String currency;
-    private final int balance;
+    private final String publisherProductId;
+    private final int quantity;
 }

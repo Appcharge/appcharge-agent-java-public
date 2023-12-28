@@ -50,6 +50,5 @@ public class PlayerData {
     @Setter
     public static class Focus{
         private String publisherSpecialOfferId;
-        private String publisherBundleId;
     }
 }
