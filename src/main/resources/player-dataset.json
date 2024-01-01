@@ -1,236 +1,68 @@
 {
   "player": {
     "status": "valid",
-    "playerProfileImage": "https://media.appcharge.com/defaults/old-profile.png",
+    "playerProfileImage": "https:///fb.com/fdsfd",
     "publisherPlayerId": "1234a",
-    "playerName": "player1",
     "sessionMetadata": {
       "key1": "value1",
       "key2": 42,
       "key3": true
     },
+    "playerName": "player1",
     "offers": [
       {
-        "publisherOfferId": "Sandbox_104",
+        "publisherOfferId": "prom_1",
         "productsSequence": [
           {
             "index": 1,
             "products": [
               {
-                "publisherProductId": "MINIGAME_MOVE",
+                "publisherProductId": "111",
                 "quantity": 72720000
+              },
+              {
+                "publisherProductId": "Product_1",
+                "quantity": 2000000
               }
             ]
           }
         ]
       },
       {
-        "publisherOfferId": "Sandbox_Offer_2",
+        "publisherOfferId": "bundle_1",
+        "offerPlayerAvailability": 5,
         "productsSequence": [
           {
             "index": 1,
             "products": [
               {
-                "publisherProductId": "XP_BOOST",
+                "publisherProductId": "Product_3",
                 "quantity": 875000000,
                 "rarityProductInfo": {
                   "stars": 3,
-                  "tooltipText": "check out terms and conditions for further information",
-                  "rarityText": "Min"
+                  "tooltipText": "test 1",
+                  "rarityText": "test rarity"
                 }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "publisherOfferId": "storeTile1",
-        "productsSequence": [
-          {
-            "index": 1,
-            "products": [
-              {
-                "publisherProductId": "010101",
-                "quantity": 3261960000
               },
               {
-                "publisherProductId": "charms",
-                "quantity": 3,
+                "publisherProductId": "66754",
+                "quantity": 2,
+                "badgeText": "X2",
                 "rarityProductInfo": {
                   "stars": 4,
-                  "tooltipText": "for more info visit our terms of use. #410113 (x3)",
-                  "rarityText": "min 3"
-                },
-                "badgeText": "x3"
+                  "tooltipText": "smt",
+                  "rarityText": "here rarity minutes"
+                }
               },
               {
-                "publisherProductId": "99999",
-                "quantity": 300,
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "39126",
-                "quantity": 5
-              },
-              {
-                "publisherProductId": "39127",
-                "quantity": 10
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "publisherOfferId": "storeTile2",
-        "productsSequence": [
-          {
-            "index": 1,
-            "products": [
-              {
-                "publisherProductId": "22222",
-                "quantity": 61506000000
-              },
-              {
-                "publisherProductId": "charms",
-                "quantity": 3,
+                "publisherProductId": "test111",
+                "quantity": 5,
+                "badgeText": "X8",
                 "rarityProductInfo": {
-                  "stars": 4,
-                  "tooltipText": "for more info visit our terms of use. #410113 (x3)",
-                  "rarityText": "min 3"
-                },
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "99999",
-                "quantity": 420,
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "39126",
-                "quantity": 7
-              },
-              {
-                "publisherProductId": "39127",
-                "quantity": 30
-              },
-              {
-                "publisherProductId": "444444",
-                "quantity": 20
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "publisherOfferId": "storeTile3",
-        "productsSequence": [
-          {
-            "index": 1,
-            "products": [
-              {
-                "publisherProductId": "33333",
-                "quantity": 81579600000
-              },
-              {
-                "publisherProductId": "charms",
-                "quantity": 3,
-                "rarityProductInfo": {
-                  "stars": 4,
-                  "tooltipText": "for more info visit our terms of use. #410118 (x3)",
-                  "rarityText": "min 9"
-                },
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "99999",
-                "quantity": 510,
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "39126",
-                "quantity": 8
-              },
-              {
-                "publisherProductId": "39127",
-                "quantity": 60
-              },
-              {
-                "publisherProductId": "444444",
-                "quantity": 20
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "publisherOfferId": "storeTile4",
-        "productsSequence": [
-          {
-            "index": 1,
-            "products": [
-              {
-                "publisherProductId": "33333",
-                "quantity": 106508400000
-              },
-              {
-                "publisherProductId": "charms",
-                "quantity": 3,
-                "rarityProductInfo": {
-                  "stars": 4,
-                  "tooltipText": "for more info visit our terms of use. #410118 (x3)",
-                  "rarityText": "min 9"
-                },
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "99999",
-                "quantity": 540,
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "39126",
-                "quantity": 9
-              },
-              {
-                "publisherProductId": "39127",
-                "quantity": 120
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "publisherOfferId": "storeTile5",
-        "productsSequence": [
-          {
-            "index": 1,
-            "products": [
-              {
-                "publisherProductId": "11111",
-                "quantity": 137332800000
-              },
-              {
-                "publisherProductId": "charms",
-                "quantity": 3,
-                "rarityProductInfo": {
-                  "stars": 5,
-                  "tooltipText": "for more info visit our terms of use. #410119 (x3)",
-                  "rarityText": "min 3"
-                },
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "99999",
-                "quantity": 675,
-                "badgeText": "x3"
-              },
-              {
-                "publisherProductId": "39126",
-                "quantity": 10
-              },
-              {
-                "publisherProductId": "39127",
-                "quantity": 120
+                  "stars": 3,
+                  "tooltipText": "tooltip text",
+                  "rarityText": "very rare text"
+                }
               }
             ]
           }
@@ -239,12 +71,12 @@
     ],
     "balances": [
       {
-        "publisherProductId": "39128",
-        "quantity": 15
+        "publisherProductId": "111",
+        "balance": 15
       },
       {
-        "publisherProductId": "39133",
-        "quantity": 25505107
+        "publisherProductId": "kkk",
+        "balance": 13
       }
     ],
     "segments": [],
