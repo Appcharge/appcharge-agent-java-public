@@ -36,5 +36,4 @@ public class PublisherPayload {
     private String paymentMethod;
     private String countryCode2;
     private String createdByIp;
-    private Object sessionMetadata;
 }
