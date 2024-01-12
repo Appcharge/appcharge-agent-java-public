@@ -4,10 +4,7 @@ import com.appcharge.server.controller.auth.methods.AppleAuth;
 import com.appcharge.server.controller.auth.methods.FacebookAuth;
 import com.appcharge.server.controller.auth.methods.GoogleAuth;
 import com.appcharge.server.exception.BadRequestException;
-import com.appcharge.server.models.auth.AuthResponse;
-import com.appcharge.server.models.auth.AuthResult;
-import com.appcharge.server.models.auth.AuthenticationRequest;
-import com.appcharge.server.models.auth.ItemBalance;
+import com.appcharge.server.models.auth.*;
 import com.appcharge.server.service.AuthService;
 import com.appcharge.server.service.SecretsService;
 import lombok.SneakyThrows;
@@ -67,4 +64,12 @@ public class AuthServiceImpl implements AuthService {
                 List.of(new ItemBalance("diamonds", 15))
         );
     }
+
+    @Override
+    @SneakyThrows
+    public OtpDeepLinkGenerationResponse generateOtpDeepLink(OtpDeepLinkGenerationRequest otpAuthRequest) {
+        // Mock (Publisher logic here)
+        return new OtpDeepLinkGenerationResponse("https://example.com/megadeeplink", "my_token");
+    }
+
 }
