@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class OtpAuthenticationRequest {
+public class OtpDeepLinkGenerationRequest {
     public enum DeviceType {
         DESKTOP,
         MOBILE,

@@ -10,7 +10,6 @@ import com.appcharge.server.service.SecretsService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Objects;
@@ -68,9 +67,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     @SneakyThrows
-    public OtpAuthResponse authenticatePlayerOtp(OtpAuthenticationRequest otpAuthRequest) {
+    public OtpDeepLinkGenerationResponse generateOtpDeepLink(OtpDeepLinkGenerationRequest otpAuthRequest) {
         // Mock (Publisher logic here)
-        return new OtpAuthResponse("https://example.com/megadeeplink", "my_token");
+        return new OtpDeepLinkGenerationResponse("https://example.com/megadeeplink", "my_token");
     }
 
 }
