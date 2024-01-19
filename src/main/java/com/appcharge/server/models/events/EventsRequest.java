@@ -18,6 +18,12 @@ public class EventsRequest {
     public Map<String, Object> sessionMetadata;
     public String paymentMethod;
     public String reason;
+    public String loginMethod;
+    public String platform;
+    public String countryCode2;
+    public String sessionId;
+    public String result;
+    public String reasonDescription;
 
     @Getter
     @Setter
