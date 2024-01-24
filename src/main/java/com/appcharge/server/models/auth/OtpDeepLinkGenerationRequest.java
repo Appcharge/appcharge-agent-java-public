@@ -16,4 +16,5 @@ public class OtpDeepLinkGenerationRequest {
 
     private DeviceType device;
     private String date;
+    private String platform;
 }
